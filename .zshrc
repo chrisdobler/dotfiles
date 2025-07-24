@@ -135,3 +135,17 @@ dps()  {
   }' | less -FSX;
 }
 dpsa() { dps -a $@; }
+
+
+# keep unlimited history
+# ── history size ───────────────────────────────────────────
+HISTSIZE=1000000          # lines kept in memory this session
+SAVEHIST=$HISTSIZE        # lines written to the history file
+HISTFILE=~/.zsh_history   # where they’re stored
+
+# ── recommended options ───────────────────────────────────
+setopt APPEND_HISTORY      # don’t overwrite the file, append to it
+setopt SHARE_HISTORY       # sessions share the same history file
+setopt HIST_IGNORE_DUPS    # ignore consecutive duplicates
+setopt HIST_EXPIRE_DUPS_FIRST  # drop oldest duplicates first
+setopt EXTENDED_HISTORY    # save timestamp & duration with each cmd
